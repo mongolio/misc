@@ -36,3 +36,20 @@ def resolve_country(current_ip):
     response = urlopen(url)
     data = json.load(response)
     return data['country']
+
+
+def main():
+    """
+    """
+    ip_addresses_list = []
+    ip_to_country_mappings = {}
+
+    ip_addresses_list = read_input_file()
+    for ip_address in ip_addresses_list:
+        country = resolve_country(ip_address)
+        ip_to_country_mappings[ip_address] = country
+
+    save_output_file(ip_to_country_mappings)
+
+if __name__ == "__main__":
+    main()
