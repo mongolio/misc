@@ -35,8 +35,10 @@ def resolve_country(current_ip):
     url = f'http://ipinfo.io/{current_ip}?TOKEN=${TOKEN}'
     response = urlopen(url)
     data = json.load(response)
-    return data['country']
-
+    try:
+     return data['country']
+    except KeyError:
+     return "None"
 
 def main():
     """
